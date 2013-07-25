@@ -30,4 +30,5 @@ The available options for this binding are:
 
 You can mix and match the properties, if it is provided then it will be used, if not dont worry about it.
 
-There are some examples in the example.html file.
+Here is an example of what it does:
+[View Examples](https://rawgithub.com/grofit/knockout.gravatar/master/example.html)
