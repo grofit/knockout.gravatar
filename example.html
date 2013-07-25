@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Knockout Gravatar</title>
+	</head>
+	<body>
+		<h1>Knockout Gravatar Example</h1>
+		
+		<div>
+			<h2>Hash Generator</h2>
+			<label for="hash-generator">Dont want to expose the email address, no worries use an md5 hash of it</label>
+			<input type="text" id="hash-generator" data-bind="value: WannabeHash"/>
+			<input type="text" id="hash-output" data-bind="value: GeneratedHash"/>
+			<label for="hash-output">Go try the hash below, it works just as well as the plaintext email</label>
+		</div>
+		
+		<div>
+			<h2>Default Gravatar Image</h2>
+			<label for="credential">Enter Email or Email Hash</label>
+			<input type="text" id="credential" data-bind="value: CurrentCredential" />
+			<img id="default-gravatar-image" data-bind="gravatar: CurrentCredential"/>
+		</div>
+		
+		<div>
+			<h2>Sized Gravatar Image</h2>
+			<label for="size">Enter Size Required (in numeric format)</label>
+			<input type="text" id="size" data-bind="value: Size" />
+			<img id="sized-gravatar-image" data-bind="gravatar: { credential: CurrentCredential, size: Size }"/>
+		</div>
+		
+		<div>
+			<h2>Defaulted Gravatar Image</h2>
+			<label for="size">Enter Default Image Type (i.e wavatar, identicon)</label>
+			<input type="text" id="size" data-bind="value: DefaultImage" />
+			<img id="defaulted-gravatar-image" data-bind="gravatar: { credential: CurrentCredential, size: Size, defaultImage: DefaultImage }"/>
+		</div>
+		
+		<div>
+			<h2>Secured Gravatar Image</h2>
+			<img id="defaulted-gravatar-image" data-bind="gravatar: { credential: CurrentCredential, size: Size, defaultImage: DefaultImage, isSecure: true }"/>
+		</div>
+		
+		<script type="text/javascript" src="libs/knockout-2.3.0.js"></script>
+		<script type="text/javascript" src="libs/md5.js"></script>
+		<script type="text/javascript" src="src/knockout.gravatar.js"></script>
+		<script type="text/javascript">
+			function PageView()
+			{
+				var self = this;
+				
+				self.WannabeHash = ko.observable("");
+				self.CurrentCredential = ko.observable();
+				self.Size = ko.observable();
+				self.Rating = ko.observable();
+				self.DefaultImage = ko.observable();
+				
+				self.GeneratedHash = ko.computed(function() {
+					return hex_md5(self.WannabeHash());
+				});
+			}
+			
+			ko.applyBindings(new PageView());
+		</script>
+	</body>
+</html>
