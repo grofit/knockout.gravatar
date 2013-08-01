@@ -1,6 +1,8 @@
 # Knockout.Gravatar
 
-A simple binding for knockout 2.* to turn an <img> image into a gravatar image.
+A simple binding for knockout >= 2.3.0 to turn an <img> image into a gravatar image.
+
+You can get it to work for earlier versions of knockout by reverting to the old style of ko.unwrap();
 
 ## Installing
 
